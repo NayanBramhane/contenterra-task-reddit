@@ -12,6 +12,11 @@ const Card = ({ title, selfTextHtml, url, score }) => {
     setSelfText(decodedHtml);
   }, [selfTextHtml]);
 
+  // Check if the data is available before rendering the component
+  if (!title || !selfTextHtml || !url || !score) {
+    return null; 
+  }
+
   return (
     <div className="card">
       <h2 className="title">{title}</h2>
@@ -19,11 +24,9 @@ const Card = ({ title, selfTextHtml, url, score }) => {
         className="selfText"
         dangerouslySetInnerHTML={{ __html: selfText }}
       ></div>
-      <div>
-        <a className="url" href={url} target="_blank" rel="noopener noreferrer">
-          {url}
-        </a>
-      </div>
+      <a className="url" href={url} target="_blank" rel="noopener noreferrer">
+        {url}
+      </a>
       <p className="score">Score: {score}</p>
     </div>
   );

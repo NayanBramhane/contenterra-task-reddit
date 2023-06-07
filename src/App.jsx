@@ -3,6 +3,7 @@ import "./App.css";
 import Card from "./Components/Card";
 
 function App() {
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,7 +12,9 @@ function App() {
         const storedData = localStorage.getItem("myData");
         if (storedData) {
           // Data is already available, do something with it
-          console.log("Data already exists:", JSON.parse(storedData));
+          const parsedData = JSON.parse(storedData);
+          const children = parsedData.data.children;
+          setCards(children);
         } else {
           // Fetch data from the URL
           const response = await fetch("https://www.reddit.com/r/reactjs.json");
@@ -21,7 +24,12 @@ function App() {
           localStorage.setItem("myData", JSON.stringify(data));
 
           // Do something with the fetched data
-          console.log("Fetched data:", data);
+          const storedData = localStorage.getItem("myData");
+          if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            const children = parsedData.data.children;
+            setCards(children);
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,10 +39,8 @@ function App() {
     fetchData();
   }, []);
 
-  const [cards, setCards] = useState([]);
-
   useEffect(() => {
-    const storedData = localStorage.getItem('myData');
+    const storedData = localStorage.getItem("myData");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       const children = parsedData.data.children;
@@ -46,11 +52,11 @@ function App() {
     <div>
       {cards.map((card, index) => (
         <Card
-        key={index}
-        title={card.data.title}
-        selfTextHtml={card.data.selftext_html}
-        url={card.data.url}
-        score={card.data.score}
+          key={index}
+          title={card.data.title}
+          selfTextHtml={card.data.selftext_html}
+          url={card.data.url}
+          score={card.data.score}
         />
       ))}
     </div>
