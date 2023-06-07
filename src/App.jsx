@@ -42,7 +42,6 @@ function App() {
     }
   }, []);
 
-
   return (
     <div>
       {cards.map((card, index) => (
