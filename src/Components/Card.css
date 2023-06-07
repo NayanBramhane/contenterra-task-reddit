@@ -1,0 +1,57 @@
+:root {
+  --font-size-base: 16px; /* Define the base font size */
+}
+
+.card {
+  background-color: #e76868;
+  padding: 1.25rem; /* 20px / 16px = 1.25rem */
+  margin: 0.625rem; /* 10px / 16px = 0.625rem */
+  border-radius: 0.5rem; /* 8px / 16px = 0.5rem */
+  box-shadow: 0px 0.125rem 0.25rem rgba(0, 0, 0, 0.966); /* 0px 2px 4px / 16px = 0px 0.125rem 0.25rem */
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  background-color: bisque;
+  font-size: 1.5rem; /* 24px / 16px = 1.5rem */
+  font-weight: bold;
+  margin-bottom: 0.625rem; /* 10px / 16px = 0.625rem */
+}
+
+.selfText {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(238, 245, 147);
+  margin-bottom: 0.625rem; /* 10px / 16px = 0.625rem */
+}
+
+.url {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: beige;
+  display: block;
+  color: blue;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.url:hover {
+  cursor: pointer;
+}
+
+.score {
+    padding: 0.5rem;
+    display: inline-block;
+    background-color: rgb(95, 230, 155) ;
+  font-style: italic;
+  color: rgb(39, 20, 4);
+  border-radius: 2.2rem;
+}
+
+@media (max-width: 768px) {
+  .url {
+    word-break: break-word;
+  }
+}
